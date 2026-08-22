@@ -1,0 +1,6 @@
+# Full LTE NAS semantic decoding (pycrate_mobile.NASLTE). CryptoMobile is an
+# optional pycrate encryption backend and is not needed by this CLI.
+pycrate>=0.8.1,<0.9
+
+# Optional NAS integrity/ciphering helpers vendored with the decoder modules.
+cryptography>=46.0,<51
