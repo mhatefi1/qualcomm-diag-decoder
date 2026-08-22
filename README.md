@@ -1,223 +1,146 @@
 # Poco X3 Signal Decoder Tool
 
-This command-line tool reads Poco X3 Dev/Diag capture files and saves the
-decoded results as JSON. It works entirely in Python and does not require the
-Android Signaling App Demo, Android Studio, Java, or Gradle.
+A self-contained Python command-line tool for decoding Poco X3 Dev/Diag
+captures and exporting the results to JSON. It does not require Android
+Studio, Java, Gradle, or the original Android Signaling App Demo.
 
-The capture filename and extension do not matter. The tool checks the file's
-contents to determine whether it is a supported capture.
+## Requirements
 
-## Before you begin
-
-You need:
-
-- Windows, Linux, or macOS
 - Python 3.10 or newer
-- Enough free disk space for the JSON result
+- Windows, Linux, or macOS
+- Enough disk space for the exported JSON
 
-Check your Python version:
-
-```text
-python --version
-```
-
-On Windows, you can use `py -3` instead of `python` if necessary.
-
-## Install the required packages
-
-Open PowerShell, Command Prompt, or a terminal in this project folder. Then
-run:
+Install the dependencies from the project folder:
 
 ```text
 python -m pip install --upgrade -r requirements.txt
 ```
 
-Do not install `pycrate[naslte]`. Its optional CryptoMobile package is not
-available from the normal Python package index and is not required by this
-tool. The included requirements file installs the correct packages.
+Use plain `pycrate` from `requirements.txt`. Do not install
+`pycrate[naslte]`; its optional CryptoMobile package is unavailable from the
+normal Python package index and is not required by this tool.
 
-## Decode a capture
+## Usage
 
-Run the tool with the capture file as the first argument:
+Decode a capture:
 
 ```text
 python dev_diag_decoder.py capture_file
 ```
 
-Windows example:
-
-```text
-python dev_diag_decoder.py "C:\Users\YourName\Desktop\capture.pxdg"
-```
-
-Always put quotation marks around a path that contains spaces.
-
-### Choose an output name or folder
-
-Use `--output` or `-o` to select the base name and location of the JSON file:
+Choose an output base name or folder:
 
 ```text
 python dev_diag_decoder.py capture_file --output result.json
 ```
 
-Another folder can also be selected:
+Quote paths containing spaces:
 
 ```text
-python dev_diag_decoder.py capture_file --output "C:\Users\YourName\Desktop\result.json"
+python dev_diag_decoder.py "C:\My Captures\capture.pxdg" --output "C:\Results\result.json"
 ```
 
-JSON export is always created; it cannot be disabled.
+Show all command options:
 
-## Where to find the result
+```text
+python dev_diag_decoder.py --help
+```
 
-Every JSON filename receives a UTC timestamp so an earlier result is not
-overwritten.
+## Output
 
-- Without `--output`, the JSON is saved in the project folder next to
-  `dev_diag_decoder.py`.
-- With `--output`, it is saved in the selected folder using the selected base
-  name.
-
-Examples:
+JSON export is mandatory and is always created. A UTC timestamp is appended so
+an older result is not overwritten:
 
 ```text
 capture.pxdg.decoded-20260823T120000123456Z.json
 result-20260823T120000123456Z.json
 ```
 
-The JSON contains overall statistics, signal counts, decoded packet fields,
-schema identifiers, and warnings for packets that could not be decoded.
-Timestamped result files are ignored by Git.
+Without `--output`, the JSON is saved in the project root beside
+`dev_diag_decoder.py`. With `--output`, it is saved in the selected location.
+Timestamped exports are ignored by Git.
 
-## What appears in the terminal
+The terminal displays progress, aggregate statistics, recognized signal
+counts, and the JSON path. It does not print decoded packet contents.
+Unclassified signals remain in the JSON summary but are hidden from the
+terminal signal list.
 
-Decoded packet contents are not printed in the terminal. The terminal shows:
-
-- A progress bar while the capture is being read
-- A progress bar while JSON is being written
-- A summary of found, decoded, unsupported, and malformed packets
-- Found and decoded totals for each recognized signal present
-- The full path of the generated JSON file
-
-Example:
-
-```text
-Statistics:
-  Input format:       PXDG_V1
-  Capture records:    733
-  Packets found:      4976
-  Decoded:            885
-  Unsupported:        4091
-  Malformed:          0
-  Rejected frames:    27482
-  Signals present:
-    0xB061  found=1 decoded=1  LTE MAC RACH trigger
-    0xB0C0  found=39 decoded=39  LTE RRC OTA packet
-
-JSON output: C:\path\to\capture.pxdg.decoded-TIMESTAMP.json
-```
-
-An unsupported or malformed packet does not stop the operation. The tool logs
-the problem in JSON and continues with later packets. Progress and error text
-are kept separate from the generated JSON.
-
-Unclassified signal IDs are included in the JSON summary but are hidden from
-the terminal's `Signals present` list to keep the console readable.
+Unsupported or malformed packets are recorded in JSON and do not stop later
+packets from being processed. Progress and errors are written separately so
+they cannot corrupt the JSON output.
 
 ## Supported data
 
-The tool supports captures from the validated Poco X3 (`surya`) profile in
-these containers:
+Capture containers:
 
 - PXDG version 1 streams
-- Raw Qualcomm DIAG data using `0x20` driver wrappers
+- Raw Poco X3 Qualcomm DIAG data using `0x20` driver wrappers
 
-The bundled decoders cover LTE RRC, NAS, MAC, RLC, PDCP, PHY, serving-cell and
-random-access records, plus selected GERAN RR and GPRS GMM messages. This
-includes GERAN Paging Response and Ciphering Mode, and GMM Authentication,
-Ciphering, and Routing Area Update messages.
+The validated Poco X3 (`surya`) profile includes 37 decoder routes covering:
 
-The following are not supported:
+- LTE RRC Release-14 message trees
+- LTE NAS, including protected-envelope metadata
+- LTE MAC, RLC, PDCP, PHY, serving-cell, and random-access records
+- GERAN RR Paging Response and Ciphering Mode
+- GPRS GMM Authentication, Ciphering, and Routing Area Update
+
+Not supported:
 
 - Plain HDLC or QMDL files without the required wrapper
-- Capture containers from unrelated tools or modem vendors
-- Unknown packet versions or layouts
-- Device profiles other than the validated Poco X3 profile
-- Unobserved protocol branches such as LTE RRC MCCH
-- GERAN or GMM message types outside the decoded sets above
+- Other modem vendors or unvalidated device profiles
+- Unknown packet versions and layouts
+- Unobserved branches such as LTE RRC MCCH
+- GERAN/GMM messages outside the decoded sets above
 
-Unsupported packets are preserved as warnings where possible; the tool does
-not guess their contents.
+The tool preserves unsupported data where possible instead of guessing its
+meaning.
 
 ## Privacy
 
 Known subscriber identifiers, security keys, and sensitive binary fields are
-redacted from exported packet fields. Raw capture payloads are not copied into
-the JSON. However, diagnostic data can still contain device or network
-information, so keep both the capture and JSON result secure.
+redacted. Raw capture payloads are not copied into JSON. Diagnostic results can
+still contain device or network information, so store both captures and
+exports securely.
 
 ## Troubleshooting
 
-### `python` is not recognized
+### Python is not recognized
 
-Install Python 3.10 or newer and enable the installer option that adds Python
-to `PATH`. Reopen the terminal after installation. On Windows, try:
-
-```text
-py -3 dev_diag_decoder.py capture_file
-```
+Install Python 3.10 or newer, enable the option to add Python to `PATH`, and
+reopen the terminal. On Windows, try `py -3` instead of `python`.
 
 ### CryptoMobile or `No matching distribution` error
 
-Install from this project's requirements file:
+Run:
 
 ```text
 python -m pip install --upgrade -r requirements.txt
 ```
 
-If you previously tried `pycrate[naslte]`, uninstalling it is not necessary;
-installing from `requirements.txt` is sufficient. CryptoMobile is optional and
-is not used by this CLI.
+CryptoMobile is optional and is not used by this CLI.
 
-### The capture is reported as unsupported
+### Capture is unsupported
 
-Renaming the file or changing its extension does not change its contents.
-Confirm that it is a PXDG v1 capture or Poco X3 Qualcomm `0x20`-wrapped DIAG
-capture.
+Confirm that it is PXDG v1 or Poco X3 Qualcomm `0x20`-wrapped DIAG data.
+Changing a file extension does not change the underlying format.
 
-### The JSON file cannot be written
+### JSON cannot be written
 
-Select a folder where your user account can create files:
+Select a writable folder and check available disk space:
 
 ```text
 python dev_diag_decoder.py capture_file --output "C:\Users\Public\result.json"
 ```
 
-Also check that the disk has enough free space.
+## Exit codes
 
-### Some packets are unsupported
+- `0`: Capture processed and JSON written
+- `1`: Decoder, format, dependency, or output failure
+- `2`: Invalid command or path
 
-This is expected when a capture contains signal IDs or packet versions outside
-the validated decoder set. Check the per-signal counts in the terminal and the
-packet warnings in JSON. Supported packets are still decoded.
+## Validation
 
-## Command help
-
-Show the complete built-in command reference:
-
-```text
-python dev_diag_decoder.py --help
-```
-
-Exit codes:
-
-- `0`: Capture processed and JSON written successfully
-- `1`: Decoder, capture-format, dependency, or output failure
-- `2`: Invalid command or input/output path
-
-## Decoder validation
-
-The self-contained Python implementation includes all 37 routes from the
-validated decoder manifest. Its parity tests cover GERAN, GMM, LTE RRC, NAS,
-and protected-NAS correlation. The bundled LTE RRC decoder uses a Release-14
-schema and was verified against the available private RRC corpus.
+The Python decoder passed parity tests for all 37 validated routes and the
+available 258-message private LTE RRC corpus. Automated tests cover GERAN,
+GMM, LTE RRC, NAS, protected-NAS correlation, capture handling, JSON export,
+and CLI behavior.
