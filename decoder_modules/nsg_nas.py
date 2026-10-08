@@ -182,6 +182,7 @@ def decode_lte_nas(
     *,
     security_context: "EPSSecurityContext | None" = None,
     full_count: int | None = None,
+    allow_proprietary_tail: bool = True,
 ) -> dict[str, Any]:
     """Decode one LTE EPS NAS PDU.
 
@@ -260,7 +261,7 @@ def decode_lte_nas(
     # B0E2 ESM OTA record.  Standards decoders reject the otherwise valid PDU.
     # Retry only plain ESM, keep the first shortest trim that fully decodes,
     # and preserve every removed byte for auditability.
-    if message is None and (payload[0] & 0x0F) == 2:
+    if allow_proprietary_tail and message is None and (payload[0] & 0x0F) == 2:
         for trim in range(1, min(32, len(payload) - 2) + 1):
             try:
                 with redirect_stdout(io.StringIO()):

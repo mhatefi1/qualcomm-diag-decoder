@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decode Poco X3 Dev/Diag captures with the self-contained Python modules."""
+"""Offline capture decoding with explicitly selected phone profiles."""
 
 from __future__ import annotations
 
@@ -14,11 +14,12 @@ from typing import Any, Callable, TextIO
 
 from dev_diag_decoder_core import (
     CaptureFormatError,
-    ReferenceDecoders,
     UnsupportedPacket,
     iter_capture,
     redact,
 )
+from decoder_core.dispatcher import Dispatcher
+from decoder_profiles.registry import resolve_profile, registered_profiles
 
 
 class DecoderError(RuntimeError):
@@ -90,13 +91,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="dev_diag_decoder.py",
         description=(
-            "Decode Poco X3 Dev/Diag captures with the bundled Python decoder "
+            "Decode offline Dev/Diag captures with an explicitly selected device and bundled decoder "
             "modules. Input format is detected from content; extensions are ignored."
         ),
         epilog=(
             "Supported input formats:\n"
             "  - PXDG version 1 capture streams\n"
-            "  - Raw Poco X3 Qualcomm 0x20-wrapped DIAG data\n"
+            "  - Raw Qualcomm 0x20-wrapped DIAG data (profile-specific framing)\n"
             "\n"
             "Behavior:\n"
             "  Aggregate statistics are printed to stdout; individual decoded\n"
@@ -108,8 +109,10 @@ def build_parser() -> argparse.ArgumentParser:
             "  python -m pip install -r requirements.txt\n"
             "\n"
             "Examples:\n"
-            "  python dev_diag_decoder.py capture_file\n"
-            "  python dev_diag_decoder.py capture_file --output result.json\n"
+            "  python dev_diag_decoder.py --list-devices\n"
+            "  python dev_diag_decoder.py capture.pxdg --device poco-x3-surya\n"
+            "  python dev_diag_decoder.py capture.pxdg --device mi-11-lite-lisa\n"
+            "  python dev_diag_decoder.py capture.pxdg --device lisa --output result.json\n"
             "\n"
             "Exit codes:\n"
             "  0  Capture processed successfully\n"
@@ -120,10 +123,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "capture_file",
+        nargs="?",
         type=Path,
         metavar="CAPTURE_FILE",
         help="PXDG v1 or raw wrapped-DIAG capture; any filename extension is accepted",
     )
+    parser.add_argument("--device", metavar="PROFILE", help="required for decoding; profile ID or alias from --list-devices")
+    parser.add_argument("--list-devices", action="store_true", help="list registered IDs, readable models, codenames and aliases; no capture needed")
     parser.add_argument(
         "--output",
         "-o",
@@ -141,10 +147,15 @@ def build_parser() -> argparse.ArgumentParser:
 def decode_capture(
     capture: Path,
     progress: Callable[[int, int], None] | None = None,
+    *, profile=None,
 ) -> list[dict[str, Any]]:
     try:
-        decoders = ReferenceDecoders()
+        # Library compatibility defaults to the historic profile; the CLI never does.
+        profile = profile or resolve_profile("poco-x3-surya")
+        decoders = Dispatcher(profile)
         input_format, total_bytes, chunks = iter_capture(capture)
+        if input_format not in profile.capture_formats:
+            raise DecoderError(f"selected profile does not support {input_format}")
         if progress:
             progress(0, total_bytes)
         events: list[dict[str, Any]] = []
@@ -158,7 +169,7 @@ def decode_capture(
                     "type": "packet",
                     "index": len(events),
                     "timestamp_nanos": chunk.timestamp_nanos,
-                    "log_id": f"0x{log_id:04X}",
+                    "log_id": f"0x{log_id:04X}" if log_id is not None else None,
                     "payload_bytes": body_length,
                     "schema_id": None,
                     "fields": {},
@@ -167,10 +178,13 @@ def decode_capture(
                 if not valid_frame:
                     rejected_candidates += 1
                     continue
+                metadata = getattr(frame, "metadata", None)
+                if metadata is not None:
+                    event["frame_metadata"] = dict(metadata)
                 signal = signal_counts.setdefault(
                     log_id,
                     {
-                        "log_id": f"0x{log_id:04X}",
+                        "log_id": f"0x{log_id:04X}" if log_id is not None else None,
                         "name": decoders.signal_name(log_id),
                         "found": 0,
                         "decoded": 0,
@@ -182,8 +196,10 @@ def decode_capture(
                     event.update(
                         status="SUCCESS",
                         schema_id=schema_id,
-                        fields=redact(fields),
+                        fields=fields if getattr(decoders.adapter, "privacy_safe", False) else redact(fields),
                     )
+                    if metadata is not None:
+                        event["warnings"] = metadata.get("decode_warnings", [])
                     decoded += 1
                     signal["decoded"] += 1
                 except UnsupportedPacket as failure:
@@ -206,8 +222,9 @@ def decode_capture(
                 progress(chunk.processed_bytes, total_bytes)
         if not events and input_format != "PXDG_V1":
             raise DecoderError(
-                "unsupported capture content: expected PXDG v1 or Poco X3 "
-                "Qualcomm 0x20-wrapped DIAG data"
+                "unsupported capture content: expected PXDG v1 or "
+                "Qualcomm 0x20-wrapped DIAG data; the selected profile may not match "
+                "the capture, or the capture contains unsupported data"
             )
         events.append(
             {
@@ -220,7 +237,9 @@ def decode_capture(
                 "malformed": malformed,
                 "pending_bytes": 0,
                 "rejected_candidates": rejected_candidates,
-                "signals": [signal_counts[key] for key in sorted(signal_counts)],
+                "signals": [signal_counts[key] for key in sorted(signal_counts, key=lambda k: -1 if k is None else k)],
+                "device": profile.selection_metadata(),
+                "warnings": ([] if decoded else ["No decodable packets: the selected profile may not match the capture, or the capture contains unsupported data."]),
             }
         )
         if progress:
@@ -234,6 +253,8 @@ def print_statistics(events: list[dict[str, Any]]) -> None:
     """Print aggregate processing statistics without exposing decoded records."""
     summary = next(event for event in reversed(events) if event["type"] == "summary")
     print("Statistics:")
+    if summary.get("device"):
+        print(f"  Selected profile:   {summary['device']['profile_id']} (explicit; not independently verified)")
     print(f"  Input format:       {summary['input_format']}")
     print(f"  Capture records:    {summary['pxdg_records']}")
     print(f"  Packets found:      {summary['packets']}")
@@ -261,6 +282,7 @@ def write_json(path: Path, capture: Path, events: list[dict[str, Any]]) -> None:
     document = {
         "status": "success",
         "capture_file": str(capture),
+        "device": summary.get("device"),
         "privacy": "sensitive identifiers and binary/security fields are redacted",
         "summary": {key: value for key, value in summary.items() if key != "type"},
         "packets": [{key: value for key, value in item.items() if key != "type"} for item in packets],
@@ -268,10 +290,11 @@ def write_json(path: Path, capture: Path, events: list[dict[str, Any]]) -> None:
     write_json_document(path, document)
 
 
-def write_error_json(path: Path, capture: Path, message: str, exit_code: int) -> None:
+def write_error_json(path: Path, capture: Path, message: str, exit_code: int, profile=None) -> None:
     document = {
         "status": "error",
         "capture_file": str(capture),
+        "device": profile.selection_metadata() if profile else None,
         "privacy": "no capture payload was exported",
         "error": {"message": message, "exit_code": exit_code},
         "summary": None,
@@ -323,10 +346,11 @@ def report_failure(
     exit_code: int,
     output: Path,
     capture: Path,
+    profile=None,
 ) -> int:
     LOGGER.error(message)
     try:
-        write_error_json(output, capture, message, exit_code)
+        write_error_json(output, capture, message, exit_code, profile)
         LOGGER.error("failure details written to JSON: %s", output)
     except DecoderError as export_failure:
         LOGGER.error("could not write mandatory JSON error output: %s", export_failure)
@@ -335,7 +359,21 @@ def report_failure(
 
 def main(argv: list[str] | None = None) -> int:
     configure_logging()
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if args.list_devices:
+        if args.capture_file or args.output or args.device:
+            parser.error("--list-devices must be used without capture, --device or --output")
+        for profile in registered_profiles():
+            print(f"{profile.profile_id}  {profile.model}  codename={profile.codename}")
+            print(f"  Aliases: {', '.join(profile.aliases)}")
+        return 0
+    if not args.capture_file or not args.device:
+        parser.error("CAPTURE_FILE and --device PROFILE are required for decoding; use --list-devices")
+    try:
+        profile = resolve_profile(args.device)
+    except ValueError as failure:
+        parser.error(str(failure))
     capture = args.capture_file.expanduser().resolve()
     timestamp = utc_filename_timestamp()
     requested_output = args.output.expanduser().resolve() if args.output else None
@@ -344,7 +382,7 @@ def main(argv: list[str] | None = None) -> int:
         if requested_output
         else default_output_path(capture, timestamp)
     )
-    if requested_output == capture:
+    if requested_output == capture or output == capture:
         fallback = default_output_path(capture, timestamp)
         return report_failure(
             "--output must not overwrite the input capture; "
@@ -352,29 +390,34 @@ def main(argv: list[str] | None = None) -> int:
             2,
             fallback,
             capture,
+            profile,
         )
     if not capture.exists():
         return report_failure(
-            f"capture file does not exist: '{capture}'", 2, output, capture
+            f"capture file does not exist: '{capture}'", 2, output, capture, profile
         )
     if not capture.is_file():
         return report_failure(
-            f"capture path is not a file: '{capture}'", 2, output, capture
+            f"capture path is not a file: '{capture}'", 2, output, capture, profile
         )
     decode_progress = ProgressBar("Decoding")
     try:
-        events = decode_capture(capture, decode_progress.update)
+        events = decode_capture(capture, decode_progress.update, profile=profile)
         decode_progress.finish(capture.stat().st_size)
         export_progress = ProgressBar("Writing JSON", unit="step")
         export_progress.update(0, 1)
         write_json(output, capture, events)
         export_progress.finish(1)
         print_statistics(events)
+        if events[-1]["malformed"]:
+            LOGGER.error("%d malformed packets were skipped; processing continued. See JSON warnings for details.", events[-1]["malformed"])
+        for warning in events[-1].get("warnings", []):
+            print(f"warning: {warning}", file=sys.stderr)
         print(f"JSON output: {output}")
         return 0
     except DecoderError as failure:
         decode_progress.abort()
-        return report_failure(str(failure), 1, output, capture)
+        return report_failure(str(failure), 1, output, capture, profile)
 
 
 if __name__ == "__main__":

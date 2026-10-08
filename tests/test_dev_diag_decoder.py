@@ -219,7 +219,7 @@ class DecoderCliTest(unittest.TestCase):
             with patch.object(cli, "PROJECT_ROOT", Path(directory)):
                 with patch.object(cli, "utc_filename_timestamp", return_value=timestamp):
                     with redirect_stderr(io.StringIO()):
-                        self.assertEqual(cli.main([str(capture)]), 2)
+                        self.assertEqual(cli.main([str(capture), "--device", "poco-x3-surya"]), 2)
             error_output = cli.default_output_path(capture, timestamp)
             error_output = Path(directory) / error_output.name
             self.assertEqual(
@@ -246,7 +246,7 @@ class DecoderCliTest(unittest.TestCase):
             with patch.object(cli, "PROJECT_ROOT", Path(directory)):
                 with redirect_stderr(io.StringIO()):
                     self.assertEqual(
-                        cli.main([str(capture), "--output", str(capture)]), 2
+                        cli.main([str(capture), "--device", "poco-x3-surya", "--output", str(capture)]), 2
                     )
 
     def test_main_always_exports_json_and_keeps_progress_off_stdout(self):
@@ -260,7 +260,7 @@ class DecoderCliTest(unittest.TestCase):
             with patch.object(cli, "PROJECT_ROOT", Path(directory)):
                 with patch.object(cli, "utc_filename_timestamp", return_value=timestamp):
                     with redirect_stdout(stdout), redirect_stderr(stderr):
-                        exit_code = cli.main([str(capture)])
+                        exit_code = cli.main([str(capture), "--device", "poco-x3-surya"])
             output = Path(directory) / cli.default_output_path(capture, timestamp).name
             document = json.loads(output.read_text(encoding="utf-8"))
         self.assertEqual(exit_code, 0)
@@ -288,7 +288,7 @@ class DecoderCliTest(unittest.TestCase):
             with patch.object(cli, "PROJECT_ROOT", Path(directory)):
                 with patch.object(cli, "utc_filename_timestamp", return_value=timestamp):
                     with redirect_stdout(io.StringIO()), redirect_stderr(stderr):
-                        exit_code = cli.main([str(capture)])
+                        exit_code = cli.main([str(capture), "--device", "poco-x3-surya"])
             output = Path(directory) / cli.default_output_path(capture, timestamp).name
             document = json.loads(output.read_text(encoding="utf-8"))
         self.assertEqual(exit_code, 1)
