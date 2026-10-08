@@ -63,8 +63,8 @@ def _range_bits(count: int) -> int:
 
 
 class _SchemaDecoder:
-    def __init__(self):
-        self.schema = _schema()
+    def __init__(self, schema=None):
+        self.schema = _schema() if schema is None else schema
 
     def decode(self, root: str, payload: bytes) -> Any:
         node = self.schema["roots"].get(root)

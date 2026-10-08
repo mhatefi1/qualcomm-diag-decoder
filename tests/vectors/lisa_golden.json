@@ -1,0 +1,1243 @@
+{
+  "provenance": "Synthetic, non-capture bodies; expected results from Android Mi11DecoderRegistry/Mi11NsaDecoderRegistry",
+  "vectors": [
+    {
+      "log_id": "0x12C1",
+      "wrapper": "direct",
+      "body_hex": "030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-12c1-v3-direct",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-12c1-v3-direct",
+          "log_id": "0x12C1",
+          "record_version": 3,
+          "family": "Call Manager call event",
+          "call_manager": {
+            "event_code": 0,
+            "event_name": "originate",
+            "call_client_id": 0,
+            "call_id": 0,
+            "state_code": 0,
+            "state_name": "idle",
+            "type_code": 0,
+            "type_name": "voice",
+            "decoded_prefix_bytes": 21,
+            "uninterpreted_tail_bytes": 345,
+            "sensitive_call_fields_redacted": true
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-12c1-v3-fixed-prefix",
+            "message": "only the exact fixed scalar prefix is interpreted; the remaining call fields are redacted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0x17F7",
+      "wrapper": "direct",
+      "body_hex": "04000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-17f7-v4-direct",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-17f7-v4-exact-parser-has-no-v4-schema",
+            "message": "Mi 11 Lite route has no accepted non-5G decoder"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0x184E",
+      "wrapper": "direct",
+      "body_hex": "0200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-184e-v2-direct",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-184e-v2-nr-family-deferred",
+            "message": "Mi 11 Lite route has no accepted non-5G decoder"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0x5B2F",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01803503063515",
+      "name": "mi11-5b2f-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-5b2f-v1-radio1",
+          "log_id": "0x5B2F",
+          "record_version": 1,
+          "router_peripheral": 1,
+          "outer_radio_id": 1,
+          "family": "GSM DSDS RR signaling",
+          "qualcomm_transport": {
+            "direction": "DOWNLINK",
+            "channel_code": 0,
+            "channel_name": "DCCH",
+            "diagnostic_message_type": 53,
+            "declared_l3_span_bytes": 3,
+            "pseudo_length_bytes": 0,
+            "bounded_l3_bytes": 3,
+            "packet_version_present": true
+          },
+          "rr": {
+            "status": "decoded",
+            "message": "CIPHERING_MODE_COMMAND",
+            "protocol_discriminator": 6,
+            "message_type": 53,
+            "terminal_identity_requested": true,
+            "algorithm_identifier": 2,
+            "algorithm_name": "A5/3",
+            "start_ciphering": true
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0x5C30",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0101140200081400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-5c30-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-5c30-v1-radio1",
+          "log_id": "0x5C30",
+          "record_version": 1,
+          "router_peripheral": 1,
+          "outer_radio_id": 1,
+          "family": "GPRS DSDS SM/GMM OTA signaling",
+          "qualcomm_transport": {
+            "direction": "DOWNLINK",
+            "direction_code": 1,
+            "diagnostic_message_type": 20,
+            "l3_length": 2,
+            "opaque_trailing_bytes": 250,
+            "opaque_tail_redacted": true,
+            "packet_version_present": true
+          },
+          "gmm": {
+            "status": "decoded",
+            "message": "AUTHENTICATION_AND_CIPHERING_REJECT",
+            "protocol_discriminator": 8,
+            "message_type": 20
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB061",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010200000308200000000000000000000000000000000000000000000000000000000000050218000000000000000000000000000000000000000000",
+      "name": "mi11-b061-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b061-v1-radio1",
+          "log_id": "0xB061",
+          "record_version": 1,
+          "family": "LTE MAC RACH trigger",
+          "direction": "procedure-scoped",
+          "lower_layer": {
+            "layer": "mac",
+            "procedure": "random_access_trigger",
+            "packet_version": 1,
+            "subpacket_count": 2,
+            "subpackets": [
+              {
+                "id": 3,
+                "version": 8,
+                "size_bytes": 32,
+                "role": "configuration",
+                "status": "opaque-uninterpreted",
+                "content_redacted": true
+              },
+              {
+                "id": 5,
+                "version": 2,
+                "size_bytes": 24,
+                "role": "trigger_reason",
+                "status": "partial",
+                "content_redacted": true
+              }
+            ],
+            "reason_code": 0,
+            "reason": "connection_request",
+            "message3_size_bytes": 0,
+            "group_chosen": 0,
+            "temporary_radio_identifiers_redacted": true,
+            "matching_identifier_redacted": true,
+            "configuration_payload_bytes": 28,
+            "uninterpreted_reason_suffix_bytes": 3
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b061-v1-layout",
+            "message": "configuration subpacket and three-byte reason suffix remain uninterpreted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB062",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0101000006313400000000000007000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b062-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b062-v1-radio1",
+          "log_id": "0xB062",
+          "record_version": 1,
+          "family": "LTE MAC RACH response",
+          "direction": "procedure-scoped",
+          "lower_layer": {
+            "layer": "mac",
+            "procedure": "random_access_attempt",
+            "packet_version": 1,
+            "subpacket_id": 6,
+            "subpacket_version": 49,
+            "subpacket_size_bytes": 52,
+            "result_code": 0,
+            "result": "success",
+            "contention_based": false,
+            "message_mask": 7,
+            "message1_present": true,
+            "message2_present": true,
+            "message3_present": true,
+            "message1_bytes": 4,
+            "message2_bytes": 7,
+            "message3_bytes": 17,
+            "v49_extension_bytes": 14,
+            "temporary_radio_identifiers_redacted": true,
+            "uplink_grant_redacted": true,
+            "message3_content_redacted": true
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b062-v49-layout",
+            "message": "the exact v49 extension boundary is known but its contents remain uninterpreted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB063",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "320000000100000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b063-v50-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b063-v50-radio1",
+          "log_id": "0xB063",
+          "record_version": 50,
+          "family": "LTE MAC downlink transport block",
+          "direction": "downlink",
+          "lower_layer": {
+            "layer": "mac",
+            "procedure": "downlink_transport_block",
+            "packet_version": 50,
+            "transport_block_count": 1,
+            "logical_channel_count": 0,
+            "reason_code": 0,
+            "common_header_bytes_per_block": 16,
+            "opaque_transport_region_bytes": 28,
+            "mac_sdu_content_redacted": true
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b063-v50-envelope",
+            "message": "v50 block count is bounded but dynamic SDU/group contents remain opaque"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB064",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01010000080218000100000000000000000000000000020000000000",
+      "name": "mi11-b064-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b064-v1-radio1",
+          "log_id": "0xB064",
+          "record_version": 1,
+          "family": "LTE MAC uplink transport block",
+          "direction": "uplink",
+          "lower_layer": {
+            "layer": "mac",
+            "procedure": "uplink_transport_block",
+            "packet_version": 1,
+            "subpacket_id": 8,
+            "subpacket_version": 2,
+            "sample_count": 1,
+            "samples": [
+              {
+                "index": 0,
+                "subscription_id": 0,
+                "cell_index": 0,
+                "harq_id": 0,
+                "rnti_type_code": 0,
+                "system_frame_number": 0,
+                "subframe": 0,
+                "grant_bytes": 0,
+                "rlc_pdu_count": 0,
+                "padding_bytes": 0,
+                "bsr_event_code": 0,
+                "bsr_trigger_code": 0,
+                "mac_header_bytes": 2,
+                "mac_header_redacted": true
+              }
+            ],
+            "alignment_bytes": 3
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB082",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "300000000200010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b082-v48-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b082-v48-radio1",
+          "log_id": "0xB082",
+          "record_version": 48,
+          "family": "LTE RLC downlink PDU",
+          "direction": "downlink",
+          "lower_layer": {
+            "layer": "rlc",
+            "procedure": "downlink_am_pdu_metadata",
+            "packet_version": 48,
+            "rlc_state_count": 1,
+            "metadata_count": 2,
+            "rlc_state_record_bytes": 20,
+            "metadata_record_bytes": 40,
+            "rlc_states": [
+              {
+                "index": 0,
+                "rb_config_index": 0,
+                "configuration_code": 0,
+                "configuration_extension_code": 0,
+                "rx_next": 0,
+                "rx_next_status_trigger": 0,
+                "rx_high_status": 0,
+                "rx_next_high": 0,
+                "mode_and_sn_length_uninterpreted": true
+              }
+            ],
+            "pdu_metadata": [
+              {
+                "index": 0,
+                "system_frame_number": 0,
+                "subframe": 0,
+                "rb_config_index": 0,
+                "status_code": 0,
+                "status": "pdu_data",
+                "start_sequence_number": 0,
+                "end_sequence_number": 0,
+                "segment_offset_start": 0,
+                "segment_offset_end": 0,
+                "polling_bit": false,
+                "last_segment_flag": false,
+                "tail_segment": false,
+                "head_segment": false,
+                "inner_segment": false,
+                "payload_length_bytes": 0,
+                "pdcp_sequence_metadata_redacted": true,
+                "rlc_pdcp_content_opaque": true
+              },
+              {
+                "index": 1,
+                "system_frame_number": 0,
+                "subframe": 0,
+                "rb_config_index": 0,
+                "status_code": 0,
+                "status": "pdu_data",
+                "start_sequence_number": 0,
+                "end_sequence_number": 0,
+                "segment_offset_start": 0,
+                "segment_offset_end": 0,
+                "polling_bit": false,
+                "last_segment_flag": false,
+                "tail_segment": false,
+                "head_segment": false,
+                "inner_segment": false,
+                "payload_length_bytes": 0,
+                "pdcp_sequence_metadata_redacted": true,
+                "rlc_pdcp_content_opaque": true
+              }
+            ],
+            "raw_rlc_pdu_present": false,
+            "pdcp_content_policy": "opaque-sensitive-local-only"
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b082-v48-configuration",
+            "message": "mode/SN configuration codes remain uninterpreted and PDCP metadata is redacted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB083",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "300000000100000000000000000000000000",
+      "name": "mi11-b083-v48-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b083-v48-radio1",
+          "log_id": "0xB083",
+          "record_version": 48,
+          "family": "LTE RLC downlink control/configuration",
+          "direction": "downlink",
+          "lower_layer": {
+            "layer": "rlc",
+            "procedure": "downlink_control_or_configuration",
+            "packet_version": 48,
+            "entry_count": 1,
+            "entry_size_bytes": 10,
+            "opaque_entry_bytes": 10,
+            "entry_content_redacted": true
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b083-v48-layout",
+            "message": "the exact v48 entry boundary is known but entry fields remain uninterpreted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB092",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01010000460424000000000000000000000000000000000000000100000000000200000000000000",
+      "name": "mi11-b092-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b092-v1-radio1",
+          "log_id": "0xB092",
+          "record_version": 1,
+          "family": "LTE RLC uplink PDU",
+          "direction": "uplink",
+          "lower_layer": {
+            "layer": "rlc",
+            "procedure": "uplink_am_pdu",
+            "packet_version": 1,
+            "subpacket_id": 70,
+            "subpacket_version": 4,
+            "rb_config_index": 0,
+            "rlc_mode_code": 0,
+            "sequence_number_length_bits": 0,
+            "enabled_pdu_log_mask": 0,
+            "pdu_count": 1,
+            "pdus": [
+              {
+                "index": 0,
+                "rb_config_index": 0,
+                "system_frame_number": 0,
+                "subframe": 0,
+                "pdu_size_bytes": 0,
+                "logged_header_bytes": 2,
+                "logged_extension_bytes": 0,
+                "logged_content_redacted": true,
+                "pdu_type": "control",
+                "ack_sequence_number": 0
+              }
+            ],
+            "alignment_bytes": 3
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0B3",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01010000c328380000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000",
+      "name": "mi11-b0b3-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0b3-v1-radio1",
+          "log_id": "0xB0B3",
+          "record_version": 1,
+          "family": "LTE PDCP uplink cipher-data",
+          "direction": "uplink",
+          "lower_layer": {
+            "layer": "pdcp",
+            "procedure": "uplink_cipher_data",
+            "packet_version": 1,
+            "subpacket_id": 195,
+            "subpacket_version": 40,
+            "security_prefix_bytes": 32,
+            "security_prefix_redacted": true,
+            "srb_cipher_algorithm_code": 0,
+            "drb_cipher_algorithm_code": 0,
+            "pdu_count": 1,
+            "pdus": [
+              {
+                "index": 0,
+                "config_index": 0,
+                "rlc_mode": "AM",
+                "sequence_number_length_code": 0,
+                "sequence_number_length_bits": 5,
+                "bearer_id": 0,
+                "valid_pdu": false,
+                "pdu_size_bytes": 0,
+                "logged_bytes": 0,
+                "system_frame_number": 0,
+                "subframe": 0,
+                "sequence_number": 0,
+                "compression_type_code": 0,
+                "cipher_data_redacted": true
+              }
+            ],
+            "alignment_bytes": 3,
+            "cipher_data_policy": "opaque-sensitive-local-only"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0C0",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "1b10100f000000000000000000000b0000000002002800",
+      "name": "mi11-b0c0-v27-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0c0-v27-radio1",
+          "log_id": "0xB0C0",
+          "header_profile": "qualcomm-log-lte-rrc-ota-v27",
+          "rrc_release_major_raw": 16,
+          "rrc_release_version_raw": 16,
+          "radio_bearer_id_raw": 15,
+          "cell_context_raw": 0,
+          "frequency_raw": 0,
+          "timing_metadata_low_raw": 0,
+          "timing_metadata_high_raw": 0,
+          "pdu_number": 11,
+          "sib_mask": 0,
+          "message_length": 2,
+          "rrc": {
+            "status": "DECODED",
+            "message": "SECURITY_MODE_COMPLETE",
+            "transport": "UL-DCCH",
+            "direction": "UPLINK",
+            "transaction_id": 0,
+            "remaining_uper_bits": 9,
+            "asn1_tree": {
+              "message": [
+                "<binary 1 bytes omitted>",
+                [
+                  "securityModeComplete",
+                  {
+                    "rrc-TransactionIdentifier": 0,
+                    "criticalExtensions": [
+                      "securityModeComplete-r8",
+                      {}
+                    ]
+                  }
+                ]
+              ]
+            },
+            "c1_choice": 5,
+            "semantic_depth": "full-observed-message-tree",
+            "detail": "TS 36.331 Release-14 full observed message tree decoded"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E1",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500000000000000000000",
+      "name": "mi11-b0e1-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e1-v1-radio1",
+          "log_id": "0xB0E1",
+          "direction": "MO",
+          "plane": "ESM",
+          "form": "security-protected",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MO",
+            "payload_length": 9,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E2",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500000000",
+      "name": "mi11-b0e2-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e2-v1-radio1",
+          "log_id": "0xB0E2",
+          "direction": "MT",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MT",
+            "payload_length": 3,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E3",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500000000",
+      "name": "mi11-b0e3-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e3-v1-radio1",
+          "log_id": "0xB0E3",
+          "direction": "MO",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MO",
+            "payload_length": 3,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EA",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500000000000000000000",
+      "name": "mi11-b0ea-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ea-v1-radio1",
+          "log_id": "0xB0EA",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "security-protected",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MT",
+            "payload_length": 9,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EB",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000000000000000000",
+      "name": "mi11-b0eb-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0eb-v1-radio1",
+          "log_id": "0xB0EB",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "security-protected",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MO",
+            "payload_length": 8,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000000000000000000000000000000000000",
+      "name": "mi11-b0ec-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MT",
+            "payload_length": 17,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0109050000000000",
+      "name": "mi11-b0ed-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "placeholder",
+            "message": "QUALCOMM_NAS_PLACEHOLDER",
+            "direction": "MO",
+            "payload_length": 4,
+            "decode_scope": "all-zero placeholder; no over-air PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB130",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "a30000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b130-v163-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v163 differs from accepted v123 and uses a 32-byte stride"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB139",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "a10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b139-v161-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v161 differs from accepted v124 and uses a 100-byte stride"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB14D",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "a300000000000000000000000000000000000000",
+      "name": "mi11-b14d-v163-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v163 body is 20 bytes, not accepted v103/12 bytes"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB14E",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "a300000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b14e-v163-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v163 body is 44 bytes, not accepted v103/36 bytes"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB167",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "2800000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b167-v40-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v40 has no proven equivalence to accepted Msg1 v25"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB168",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "180000000000000000000000",
+      "name": "mi11-b168-v24-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b168-v24-radio1",
+          "log_id": "0xB168",
+          "record_version": 24,
+          "family": "LTE MAC/ML1",
+          "measurement": {
+            "version": 24,
+            "status": "decoded",
+            "reserved_prefix_hex": "<redacted>",
+            "cell_index": 0,
+            "procedure_type_code": 0,
+            "procedure_type": "contention_free",
+            "procedure_mode_code": 0,
+            "procedure_mode": "initial_access",
+            "rnti_type_code": "<redacted>",
+            "rnti_type": "<redacted>",
+            "rnti_value": "<redacted>",
+            "rnti_value_hex": "<redacted>",
+            "timing_advance_included": false,
+            "sfn": 0,
+            "subframe": 0,
+            "timing_advance_command": 0,
+            "reserved_bits_27_31": 0,
+            "reserved_bits_42_43": 0,
+            "reserved_high_bits": 0,
+            "raw_hex": "<redacted>",
+            "semantic_source": "accepted-exact-version-poco-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB169",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "280000000000000000000000",
+      "name": "mi11-b169-v40-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa v40 has no proven equivalence to accepted Msg3 v24"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB16A",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0100000000000000",
+      "name": "mi11-b16a-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b16a-v1-radio1",
+          "log_id": "0xB16A",
+          "record_version": 1,
+          "family": "LTE MAC/ML1",
+          "measurement": {
+            "version": 1,
+            "status": "decoded",
+            "reserved_hex": "<redacted>",
+            "sfn": 0,
+            "subframe": 0,
+            "contention_result_code": 0,
+            "contention_result": "fail",
+            "ul_ack_sfn": 0,
+            "ul_ack_subframe": 0,
+            "reserved_high_bits": 0,
+            "raw_hex": "<redacted>",
+            "semantic_source": "accepted-exact-version-poco-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB17F",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "05000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b17f-v5-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b17f-v5-radio1",
+          "log_id": "0xB17F",
+          "record_version": 5,
+          "family": "LTE serving-cell measurement/evaluation",
+          "measurement": {
+            "rrc": 0,
+            "earfcn": 0,
+            "pci": 0,
+            "rsrp": -180.0,
+            "avg_rsrp": -180.0,
+            "rsrq": -30.0,
+            "rssi": -110.0,
+            "semantic_source": "accepted-exact-version-poco-core",
+            "semantic_scope": "accepted-v5-prefix-through-offset-35",
+            "uninterpreted_suffix_bytes": 4
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB193",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010100001932b00000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b193-v1-radio1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b193-v1-radio1",
+          "log_id": "0xB193",
+          "record_version": 1,
+          "family": "LTE ML1/LL1",
+          "measurement": {
+            "packet_version": 1,
+            "subpacket_count": 1,
+            "outer_uninterpreted_offset_bytes": 2,
+            "outer_uninterpreted_length_bytes": 2,
+            "subpacket_id": 25,
+            "subpacket_version": 50,
+            "subpacket_size_bytes": 176,
+            "earfcn": 0,
+            "num_cells": 1,
+            "valid_rx_bits": 0,
+            "logical_to_physical_rx_map": 0,
+            "v50_header_extension_offset_bytes": 20,
+            "v50_header_extension_length_bytes": 4,
+            "cell_size_bytes": 156,
+            "cells": [
+              {
+                "index": 0,
+                "offset_bytes": 24,
+                "length_bytes": 156,
+                "physical_cell_id": 0,
+                "serving_rsrp_dbm": -140.0,
+                "filtered_rsrp_dbm": -180.0,
+                "rsrp_quantization_db": 0.0625,
+                "interpreted_bits": 33,
+                "uninterpreted_bits": 1215
+              }
+            ],
+            "semantic_scope": "partial-lisa-0xb193-v1-subpacket-0x19-v50",
+            "uninterpreted_fields": "outer word, v50 header extension, and all cell bits except PCI and two RSRP fields"
+          }
+        },
+        "warnings": [
+          {
+            "code": "partial-b193-v50-layout",
+            "message": "only private-corpus-proven Lisa v50 fields are interpreted"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB197",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "020000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-b197-v2-radio1",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-unproven-lisa-layout",
+            "message": "lisa serving-cell v2 has no accepted semantic schema"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB8A7",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "03000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-nsa-b8a7-v3",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-b8a7-v3-exact-v2.3-raw-layout-unproven",
+            "message": "exact-version schema evidence is insufficient for this NSA route"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB821",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0c0000000fa0000000000000000000001900000000010000",
+      "name": "mi11-nsa-b821-v12",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "mode_scope": "nsa-corpus-only",
+          "sa_compatibility_inferred": false,
+          "route_id": "mi11-nsa-b821-v12",
+          "log_id": "0xB821",
+          "record_version": 12,
+          "family": "NR5G RRC OTA/control",
+          "schema_evidence": "exact-nsg-v12-schema-plus-scat-exact-v12-plus-ts38331-plus-lisa-private-replay",
+          "decoder_scope": "exact-envelope-and-observed-direct-rrc-roots",
+          "rrc_release_major_raw": 15,
+          "rrc_release_version_raw": 160,
+          "rrc_release_number": 15,
+          "rrc_release_major": 10,
+          "rrc_release_minor": 0,
+          "rrc_release_version": "15.10.0",
+          "rrc_release_version_encoding": "u16le:number=bits[7:0],major=bits[15:12],minor=bits[11:8]",
+          "rrc_release_reserved_bit_count": 0,
+          "rrc_release_version_semantics_proven": true,
+          "radio_bearer_id": 0,
+          "physical_cell_id_present": true,
+          "physical_cell_id": 0,
+          "nr_arfcn_present": true,
+          "nr_arfcn": 0,
+          "all_ones_radio_context_form_observed": false,
+          "timing_field_octets": 3,
+          "timing_sfn_subframe_slot_semantics_proven": false,
+          "timing_field_redacted": true,
+          "pdu_number": 25,
+          "message_kind": "radio_bearer_configuration",
+          "embedded_direction": "internal_control",
+          "sib_mask": 0,
+          "message_length": 1,
+          "rrc": {
+            "semantic_depth": "full-observed-message-tree",
+            "asn1_tree": {},
+            "asn1_root": "RadioBearerConfig"
+          },
+          "rrc_raw_bytes_in_projection": false
+        },
+        "warnings": [
+          {
+            "code": "b821-v12-timing-encoding-unproven",
+            "message": "three-byte timing boundary is exact; SFN/subframe/slot packing remains opaque"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB97F",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "08000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-nsa-b97f-v8",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-b97f-v8-exact-v2.8-raw-layout-unproven",
+            "message": "exact-version schema evidence is insufficient for this NSA route"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB883",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "110000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "mi11-nsa-b883-v17",
+      "expected": {
+        "status": "UNSUPPORTED",
+        "warnings": [
+          {
+            "code": "unsupported-b883-v17-composite-version",
+            "message": "NR MAC schedule body is not exact observed composite 2.17"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB889",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0100020000000000000000000000000100000000000000060000000000000000",
+      "name": "mi11-nsa-b889-v1",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "mode_scope": "nsa-corpus-only",
+          "sa_compatibility_inferred": false,
+          "route_id": "mi11-nsa-b889-v1",
+          "log_id": "0xB889",
+          "record_version": 1,
+          "family": "NR5G MAC RACH Trigger",
+          "schema_evidence": "mobileinsight-4330fa9-exact-v2.1-plus-lisa-private-replay",
+          "decoder_scope": "exact-v2.1-core-with-opaque-lisa-suffix",
+          "composite_version": "2.1",
+          "public_core_bytes": 30,
+          "record_count": 1,
+          "procedure": "random_access_trigger",
+          "direction": "uplink",
+          "sleep": 0,
+          "downlink_dynamic_config_change": 0,
+          "downlink_config": 0,
+          "ml1_state_change": 0,
+          "uplink_config": 0,
+          "log_fields_change_bitmap": 0,
+          "reason_code": 0,
+          "reason": "connection_request",
+          "carrier_id": 0,
+          "first_active_uplink_bwp": 0,
+          "contention_code": 0,
+          "contention": "contention_free",
+          "msg3_size": 6,
+          "msg3_field_bytes": 6,
+          "msg3_unused_bytes": 0,
+          "subscription_redacted": true,
+          "c_rnti_redacted": true,
+          "random_access_identifier_redacted": true,
+          "msg3_redacted": true,
+          "lisa_suffix_bytes": 2,
+          "lisa_suffix_semantics_proven": false,
+          "lisa_suffix_redacted": true
+        },
+        "warnings": [
+          {
+            "code": "b889-v1-lisa-suffix-opaque",
+            "message": "the exact v2.1 core is decoded; the two-byte Lisa suffix remains uninterpreted"
+          }
+        ]
+      }
+    }
+  ]
+}

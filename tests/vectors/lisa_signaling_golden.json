@@ -1,0 +1,1578 @@
+{
+  "provenance": "Synthetic, non-capture bodies; expected results from Android Mi11DecoderRegistry/Mi11NsaDecoderRegistry",
+  "vectors": [
+    {
+      "log_id": "0xB0E1",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500271122334455aabbcc",
+      "name": "protected-esm",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e1-v1-radio1",
+          "log_id": "0xB0E1",
+          "direction": "MO",
+          "plane": "ESM",
+          "form": "security-protected",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 9 bytes omitted>",
+            "payload_length": 9,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 2,
+            "security_header_name": "integrity protected and ciphered",
+            "mac_hex": "<redacted>",
+            "sequence_number": 85,
+            "protected_payload_hex": "<binary 3 bytes omitted>",
+            "integrity_validation": "not-validated: K_NASint, integrity algorithm, bearer direction, and full NAS COUNT are unavailable",
+            "ciphering": "ciphertext preserved; K_NASenc, ciphering algorithm, and full NAS COUNT are required to decrypt",
+            "status": "decoded",
+            "message": "SECURITY_PROTECTED_NAS_MESSAGE",
+            "decoder_class": "EMMSecProtNASMessage",
+            "decoded_fields": {
+              "EMMSecProtNASMessage": [
+                {
+                  "EMMHeaderSec": [
+                    {
+                      "SecHdr": 2
+                    },
+                    {
+                      "ProtDisc": 7
+                    }
+                  ]
+                },
+                {
+                  "MAC": "<redacted>"
+                },
+                {
+                  "Seqn": 85
+                },
+                {
+                  "NASMessage": "<binary 3 bytes omitted>"
+                }
+              ]
+            },
+            "decode_scope": "security envelope only; inner NAS is ciphered",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E2",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000201d9",
+      "name": "esm-information-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e2-v1-radio1",
+          "log_id": "0xB0E2",
+          "direction": "MT",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 3 bytes omitted>",
+            "payload_length": 3,
+            "direction": "MT",
+            "protocol_discriminator": 2,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "status": "decoded",
+            "message": "ESM_INFORMATION_REQUEST",
+            "decoder_class": "ESMInformationRequest",
+            "decoded_fields": {
+              "ESMInformationRequest": [
+                {
+                  "ESMHeader": [
+                    {
+                      "EPSBearerId": 0
+                    },
+                    {
+                      "ProtDisc": 2
+                    },
+                    {
+                      "PTI": 1
+                    },
+                    {
+                      "Type": 217
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E3",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905005201c2",
+      "name": "default-bearer-accept",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e3-v1-radio1",
+          "log_id": "0xB0E3",
+          "direction": "MO",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "ACTIVATE_DEFAULT_EPS_BEARER_CONTEXT_ACCEPT",
+            "eps_bearer_identity": 5,
+            "procedure_transaction_identity": 1,
+            "optional_bytes": 0,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 3,
+            "direction": "MO",
+            "protocol_discriminator": 2,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500075d110202000000000000000000000000",
+      "name": "security-mode-command",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 17 bytes omitted>",
+            "payload_length": 17,
+            "direction": "MT",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "selected_ciphering_algorithm": 1,
+            "selected_ciphering_algorithm_name": "EEA1",
+            "selected_integrity_algorithm": 1,
+            "selected_integrity_algorithm_name": "EIA1",
+            "nas_ksi_tsc": 0,
+            "nas_ksi": 2,
+            "ue_security_capability_length": 2,
+            "ue_security_capability_offset": 5,
+            "ue_security_capability_end_offset": 7,
+            "ue_security_capability_hex": "<binary 2 bytes omitted>",
+            "ue_security_capabilities": {
+              "EEA0": 0,
+              "EEA1_128": 0,
+              "EEA2_128": 0,
+              "EEA3_128": 0,
+              "EEA4": 0,
+              "EEA5": 0,
+              "EEA6": 0,
+              "EEA7": 0,
+              "EIA0": 0,
+              "EIA1_128": 0,
+              "EIA2_128": 0,
+              "EIA3_128": 0,
+              "EIA4": 0,
+              "EIA5": 0,
+              "EIA6": 0,
+              "EIA7": 0
+            },
+            "optional_ies": [],
+            "unparsed_optional_tail_hex": "<binary 10 bytes omitted>",
+            "status": "decoded",
+            "message": "SECURITY_MODE_COMMAND",
+            "decoder_class": "EMMSecurityModeCommand",
+            "decoded_fields": {
+              "EMMSecurityModeCommand": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 93
+                    }
+                  ]
+                },
+                {
+                  "NASSecAlgo": [
+                    {
+                      "NASSecAlgo": [
+                        {
+                          "spare": 0
+                        },
+                        {
+                          "CiphAlgo": 1
+                        },
+                        {
+                          "spare": 0
+                        },
+                        {
+                          "IntegAlgo": 1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "spare": 0
+                },
+                {
+                  "NAS_KSI": [
+                    {
+                      "NAS_KSI": [
+                        {
+                          "TSC": 0
+                        },
+                        {
+                          "Value": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "UESecCap": [
+                    {
+                      "L": 2
+                    },
+                    {
+                      "UESecCap": [
+                        {
+                          "EEA0": 0
+                        },
+                        {
+                          "EEA1_128": 0
+                        },
+                        {
+                          "EEA2_128": 0
+                        },
+                        {
+                          "EEA3_128": 0
+                        },
+                        {
+                          "EEA4": 0
+                        },
+                        {
+                          "EEA5": 0
+                        },
+                        {
+                          "EEA6": 0
+                        },
+                        {
+                          "EEA7": 0
+                        },
+                        {
+                          "EIA0": 0
+                        },
+                        {
+                          "EIA1_128": 0
+                        },
+                        {
+                          "EIA2_128": 0
+                        },
+                        {
+                          "EIA3_128": 0
+                        },
+                        {
+                          "EIA4": 0
+                        },
+                        {
+                          "EIA5": 0
+                        },
+                        {
+                          "EIA6": 0
+                        },
+                        {
+                          "EIA7": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500c7112233",
+      "name": "service-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 4 bytes omitted>",
+            "payload_length": 4,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 12,
+            "security_header_name": "service request",
+            "ksi": 0,
+            "short_sequence_number": 17,
+            "short_mac_hex": "<redacted>",
+            "integrity_validation": "not-validated: EPS security context and full NAS COUNT are unavailable",
+            "status": "decoded",
+            "message": "SERVICE_REQUEST",
+            "decoder_class": "EMMServiceRequest",
+            "decoded_fields": {
+              "EMMServiceRequest": [
+                {
+                  "EMMHeaderServ": [
+                    {
+                      "SecHdr": 12
+                    },
+                    {
+                      "ProtDisc": 7
+                    }
+                  ]
+                },
+                {
+                  "KSI": 0
+                },
+                {
+                  "SeqnShort": 17
+                },
+                {
+                  "MACShort": "<redacted>"
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E2",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905005201c101010361626305010203040500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "default-bearer-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e2-v1-radio1",
+          "log_id": "0xB0E2",
+          "direction": "MT",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "ACTIVATE_DEFAULT_EPS_BEARER_CONTEXT_REQUEST",
+            "eps_bearer_identity": 5,
+            "procedure_transaction_identity": 1,
+            "eps_qos_length": 1,
+            "access_point_name_present": true,
+            "access_point_name_length": 3,
+            "pdn_address_present": true,
+            "pdn_address_length": 5,
+            "optional_bytes": 103,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 118,
+            "direction": "MT",
+            "protocol_discriminator": 2,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0E3",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000201d031000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "pdn-connectivity-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0e3-v1-radio1",
+          "log_id": "0xB0E3",
+          "direction": "MO",
+          "plane": "ESM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "PDN_CONNECTIVITY_REQUEST",
+            "eps_bearer_identity": 0,
+            "procedure_transaction_identity": 1,
+            "request_type": 1,
+            "request_type_name": "initial-request",
+            "pdn_type": 3,
+            "pdn_type_name": "IPv4v6",
+            "optional_bytes": 72,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 76,
+            "direction": "MO",
+            "protocol_discriminator": 2,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000742012105010203040500035201c2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "attach-accept",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "ATTACH_ACCEPT",
+            "eps_attach_result": 1,
+            "eps_attach_result_name": "EPS-only",
+            "t3412_unit": 1,
+            "t3412_value": 1,
+            "tai_list_length": 5,
+            "esm_container_length": 3,
+            "optional_bytes": 135,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 150,
+            "direction": "MT",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500074300035201c2",
+      "name": "attach-complete",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "ATTACH_COMPLETE",
+            "esm_container_length": 3,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 7,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000761430800000000000000004508000000000000000046004700000000000000490100",
+      "name": "emm-information",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "status": "decoded",
+            "message": "EMM_INFORMATION",
+            "information_elements": [
+              "full-network-name",
+              "short-network-name",
+              "local-time-zone",
+              "universal-time-and-local-time-zone",
+              "network-daylight-saving-time"
+            ],
+            "information_element_count": 5,
+            "semantic_source": "mi11-ts24.301-observed-branch",
+            "payload_length": 35,
+            "direction": "MT",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "decode_scope": "complete unencrypted NAS PDU"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500075201000102030405060708090a0b0c0d0e0f10101112131415161718191a1b1c1d1e1f",
+      "name": "authentication-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 36 bytes omitted>",
+            "payload_length": 36,
+            "direction": "MT",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "status": "decoded",
+            "message": "AUTHENTICATION_REQUEST",
+            "decoder_class": "EMMAuthenticationRequest",
+            "decoded_fields": {
+              "EMMAuthenticationRequest": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 82
+                    }
+                  ]
+                },
+                {
+                  "spare": 0
+                },
+                {
+                  "NAS_KSI": [
+                    {
+                      "NAS_KSI": [
+                        {
+                          "TSC": 0
+                        },
+                        {
+                          "Value": 1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "RAND": "<redacted>"
+                },
+                {
+                  "AUTN": "<redacted>"
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000753080011223344556677",
+      "name": "authentication-response",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 11 bytes omitted>",
+            "payload_length": 11,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "status": "decoded",
+            "message": "AUTHENTICATION_RESPONSE",
+            "decoder_class": "EMMAuthenticationResponse",
+            "res_length": 8,
+            "res_offset": 3,
+            "res_end_offset": 11,
+            "res_hex": "<redacted>",
+            "decoded_fields": {
+              "EMMAuthenticationResponse": "<redacted>"
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0109050007560419111111",
+      "name": "identity-response",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 7 bytes omitted>",
+            "payload_length": 7,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "identity_length": 4,
+            "identity_offset": 3,
+            "identity_end_offset": 7,
+            "identity_hex": "<binary 4 bytes omitted>",
+            "identity_type": 1,
+            "identity_type_name": "IMSI",
+            "identity_present": true,
+            "identity_digit_count": 7,
+            "imsi_digits": "<redacted>",
+            "status": "decoded",
+            "message": "IDENTITY_RESPONSE",
+            "decoder_class": "EMMIdentityResponse",
+            "decoded_fields": {
+              "EMMIdentityResponse": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 86
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "L": 4
+                    },
+                    {
+                      "ID": [
+                        {
+                          "Digit1": "<redacted>"
+                        },
+                        {
+                          "Odd": 1
+                        },
+                        {
+                          "Type": 1
+                        },
+                        {
+                          "Digits": "<redacted>"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "01090500075e23090300000000000000f0",
+      "name": "security-mode-complete",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 13 bytes omitted>",
+            "payload_length": 13,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "imeisv_present": true,
+            "imeisv_length": 9,
+            "imeisv_offset": 4,
+            "imeisv_end_offset": 13,
+            "imeisv_hex": "<redacted>",
+            "imeisv_digits": "<redacted>",
+            "status": "decoded",
+            "message": "SECURITY_MODE_COMPLETE",
+            "decoder_class": "EMMSecurityModeComplete",
+            "decoded_fields": {
+              "EMMSecurityModeComplete": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 94
+                    }
+                  ]
+                },
+                {
+                  "IMEISV": "<redacted>"
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000741710bf60000000000000000000002000000040201d011000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "name": "attach-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 147 bytes omitted>",
+            "payload_length": 147,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "nas_ksi_tsc": 0,
+            "nas_ksi": 7,
+            "eps_attach_type": 1,
+            "eps_attach_type_name": "EPS attach",
+            "eps_identity_length": 11,
+            "eps_identity_offset": 4,
+            "eps_identity_end_offset": 15,
+            "eps_identity_hex": "<binary 11 bytes omitted>",
+            "eps_identity_type": 6,
+            "eps_identity_type_name": "GUTI",
+            "ue_network_capability_length": 2,
+            "ue_network_capability_offset": 16,
+            "ue_network_capability_end_offset": 18,
+            "ue_network_capability_hex": "<binary 2 bytes omitted>",
+            "ue_network_capabilities": {
+              "EEA0": 0,
+              "EEA1_128": 0,
+              "EEA2_128": 0,
+              "EEA3_128": 0,
+              "EEA4": 0,
+              "EEA5": 0,
+              "EEA6": 0,
+              "EEA7": 0,
+              "EIA0": 0,
+              "EIA1_128": 0,
+              "EIA2_128": 0,
+              "EIA3_128": 0,
+              "EIA4": 0,
+              "EIA5": 0,
+              "EIA6": 0,
+              "EIA7": 0
+            },
+            "esm_container_length": 4,
+            "esm_container_offset": 20,
+            "esm_container_end_offset": 24,
+            "esm_container_hex": "<binary 4 bytes omitted>",
+            "contained_protocol_discriminator": 2,
+            "nested_message": "PDN_CONNECTIVITY_REQUEST",
+            "optional_ies": [],
+            "unparsed_optional_tail_hex": "<binary 123 bytes omitted>",
+            "status": "decoded",
+            "message": "ATTACH_REQUEST",
+            "decoder_class": "EMMAttachRequest",
+            "decoded_fields": {
+              "EMMAttachRequest": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 65
+                    }
+                  ]
+                },
+                {
+                  "NAS_KSI": [
+                    {
+                      "NAS_KSI": [
+                        {
+                          "TSC": 0
+                        },
+                        {
+                          "Value": 7
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "EPSAttachType": [
+                    {
+                      "V": "<binary content omitted>"
+                    }
+                  ]
+                },
+                {
+                  "EPSID": [
+                    {
+                      "L": 11
+                    },
+                    {
+                      "EPSID": [
+                        {
+                          "Digit1": "<redacted>"
+                        },
+                        {
+                          "Odd": 0
+                        },
+                        {
+                          "Type": 6
+                        },
+                        {
+                          "PLMN": "000000"
+                        },
+                        {
+                          "MMEGroupID": 0
+                        },
+                        {
+                          "MMECode": 0
+                        },
+                        {
+                          "MTMSI": "<redacted>"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "UENetCap": [
+                    {
+                      "L": 2
+                    },
+                    {
+                      "UENetCap": [
+                        {
+                          "EEA0": 0
+                        },
+                        {
+                          "EEA1_128": 0
+                        },
+                        {
+                          "EEA2_128": 0
+                        },
+                        {
+                          "EEA3_128": 0
+                        },
+                        {
+                          "EEA4": 0
+                        },
+                        {
+                          "EEA5": 0
+                        },
+                        {
+                          "EEA6": 0
+                        },
+                        {
+                          "EEA7": 0
+                        },
+                        {
+                          "EIA0": 0
+                        },
+                        {
+                          "EIA1_128": 0
+                        },
+                        {
+                          "EIA2_128": 0
+                        },
+                        {
+                          "EIA3_128": 0
+                        },
+                        {
+                          "EIA4": 0
+                        },
+                        {
+                          "EIA5": 0
+                        },
+                        {
+                          "EIA6": 0
+                        },
+                        {
+                          "EIA7": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "ESMContainer": [
+                    {
+                      "L": 4
+                    },
+                    {
+                      "ESMPDNConnectivityRequest": [
+                        {
+                          "ESMHeader": [
+                            {
+                              "EPSBearerId": 0
+                            },
+                            {
+                              "ProtDisc": 2
+                            },
+                            {
+                              "PTI": 1
+                            },
+                            {
+                              "Type": 208
+                            }
+                          ]
+                        },
+                        {
+                          "PDNType": [
+                            {
+                              "V": "<binary content omitted>"
+                            }
+                          ]
+                        },
+                        {
+                          "RequestType": [
+                            {
+                              "V": "<binary content omitted>"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0EC",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000744110000000000000000000000000000000000000000000000000000000000000000",
+      "name": "attach-reject",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ec-v1-radio1",
+          "log_id": "0xB0EC",
+          "direction": "MT",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 35 bytes omitted>",
+            "payload_length": 35,
+            "direction": "MT",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "emm_cause": 17,
+            "emm_cause_name": "network failure",
+            "optional_ies": [],
+            "status": "decoded",
+            "message": "ATTACH_REJECT",
+            "decoder_class": "EMMAttachReject",
+            "decoded_fields": {
+              "EMMAttachReject": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 68
+                    }
+                  ]
+                },
+                {
+                  "EMMCause": [
+                    {
+                      "EMMCause": 17
+                    }
+                  ]
+                }
+              ]
+            },
+            "unparsed_optional_tail_hex": "<binary 32 bytes omitted>",
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "010905000745710bf600000000000000000000",
+      "name": "detach-request",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 15 bytes omitted>",
+            "payload_length": 15,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "status": "decoded",
+            "message": "DETACH_REQUEST",
+            "decoder_class": "EMMDetachRequestMO",
+            "decoded_fields": {
+              "EMMDetachRequestMO": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 69
+                    }
+                  ]
+                },
+                {
+                  "NAS_KSI": [
+                    {
+                      "NAS_KSI": [
+                        {
+                          "TSC": 0
+                        },
+                        {
+                          "Value": 7
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "EPSDetachType": [
+                    {
+                      "EPSDetachTypeMO": [
+                        {
+                          "SwitchOff": 0
+                        },
+                        {
+                          "Type": 1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "EPSID": [
+                    {
+                      "L": 11
+                    },
+                    {
+                      "EPSID": [
+                        {
+                          "Digit1": "<redacted>"
+                        },
+                        {
+                          "Odd": 0
+                        },
+                        {
+                          "Type": 6
+                        },
+                        {
+                          "PLMN": "000000"
+                        },
+                        {
+                          "MMEGroupID": 0
+                        },
+                        {
+                          "MMECode": 0
+                        },
+                        {
+                          "MTMSI": "<redacted>"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB0ED",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0109050007630a00000000000000000000",
+      "name": "uplink-nas-transport",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "route_id": "mi11-b0ed-v1-radio1",
+          "log_id": "0xB0ED",
+          "direction": "MO",
+          "plane": "EMM",
+          "form": "plain",
+          "qualcomm_header": {
+            "packet_version": 1,
+            "major_version": 5,
+            "rrc_release_number": 9,
+            "minor_version": 0
+          },
+          "nas": {
+            "payload_hex": "<binary 13 bytes omitted>",
+            "payload_length": 13,
+            "direction": "MO",
+            "protocol_discriminator": 7,
+            "security_header_type": 0,
+            "security_header_name": "plain NAS message",
+            "status": "decoded",
+            "message": "UPLINK_NAS_TRANSPORT",
+            "decoder_class": "EMMULNASTransport",
+            "nas_container_length": 10,
+            "nas_container_offset": 3,
+            "nas_container_end_offset": 13,
+            "nas_container_hex": "<binary 10 bytes omitted>",
+            "contained_protocol_discriminator": 0,
+            "decoded_fields": {
+              "EMMULNASTransport": [
+                {
+                  "EMMHeader": [
+                    {
+                      "SecHdr": 0
+                    },
+                    {
+                      "ProtDisc": 7
+                    },
+                    {
+                      "Type": 99
+                    }
+                  ]
+                },
+                {
+                  "NASContainer": [
+                    {
+                      "L": 10
+                    },
+                    {
+                      "V": "<binary 10 bytes omitted>"
+                    }
+                  ]
+                }
+              ]
+            },
+            "decode_scope": "complete unencrypted NAS PDU",
+            "semantic_source": "accepted-poco-eps-nas-core"
+          }
+        },
+        "warnings": []
+      }
+    },
+    {
+      "log_id": "0xB821",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0c0000000fa0000000000000000000000900000000010000",
+      "name": "nr-direct-root-9",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "mode_scope": "nsa-corpus-only",
+          "sa_compatibility_inferred": false,
+          "route_id": "mi11-nsa-b821-v12",
+          "log_id": "0xB821",
+          "record_version": 12,
+          "family": "NR5G RRC OTA/control",
+          "schema_evidence": "exact-nsg-v12-schema-plus-scat-exact-v12-plus-ts38331-plus-lisa-private-replay",
+          "decoder_scope": "exact-envelope-and-observed-direct-rrc-roots",
+          "rrc_release_major_raw": 15,
+          "rrc_release_version_raw": 160,
+          "rrc_release_number": 15,
+          "rrc_release_major": 10,
+          "rrc_release_minor": 0,
+          "rrc_release_version": "15.10.0",
+          "rrc_release_version_encoding": "u16le:number=bits[7:0],major=bits[15:12],minor=bits[11:8]",
+          "rrc_release_reserved_bit_count": 0,
+          "rrc_release_version_semantics_proven": true,
+          "radio_bearer_id": 0,
+          "physical_cell_id_present": true,
+          "physical_cell_id": 0,
+          "nr_arfcn_present": true,
+          "nr_arfcn": 0,
+          "all_ones_radio_context_form_observed": false,
+          "timing_field_octets": 3,
+          "timing_sfn_subframe_slot_semantics_proven": false,
+          "timing_field_redacted": true,
+          "pdu_number": 9,
+          "message_kind": "rrc_reconfiguration",
+          "embedded_direction": "internal_control",
+          "sib_mask": 0,
+          "message_length": 1,
+          "rrc": {
+            "semantic_depth": "full-observed-message-tree",
+            "asn1_tree": {
+              "rrc-TransactionIdentifier": 0,
+              "criticalExtensions": [
+                "rrcReconfiguration",
+                {}
+              ]
+            },
+            "asn1_root": "RRCReconfiguration"
+          },
+          "rrc_raw_bytes_in_projection": false
+        },
+        "warnings": [
+          {
+            "code": "b821-v12-timing-encoding-unproven",
+            "message": "three-byte timing boundary is exact; SFN/subframe/slot packing remains opaque"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB821",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0c0000000fa0000000000000000000000a00000000010000",
+      "name": "nr-direct-root-10",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "mode_scope": "nsa-corpus-only",
+          "sa_compatibility_inferred": false,
+          "route_id": "mi11-nsa-b821-v12",
+          "log_id": "0xB821",
+          "record_version": 12,
+          "family": "NR5G RRC OTA/control",
+          "schema_evidence": "exact-nsg-v12-schema-plus-scat-exact-v12-plus-ts38331-plus-lisa-private-replay",
+          "decoder_scope": "exact-envelope-and-observed-direct-rrc-roots",
+          "rrc_release_major_raw": 15,
+          "rrc_release_version_raw": 160,
+          "rrc_release_number": 15,
+          "rrc_release_major": 10,
+          "rrc_release_minor": 0,
+          "rrc_release_version": "15.10.0",
+          "rrc_release_version_encoding": "u16le:number=bits[7:0],major=bits[15:12],minor=bits[11:8]",
+          "rrc_release_reserved_bit_count": 0,
+          "rrc_release_version_semantics_proven": true,
+          "radio_bearer_id": 0,
+          "physical_cell_id_present": true,
+          "physical_cell_id": 0,
+          "nr_arfcn_present": true,
+          "nr_arfcn": 0,
+          "all_ones_radio_context_form_observed": false,
+          "timing_field_octets": 3,
+          "timing_sfn_subframe_slot_semantics_proven": false,
+          "timing_field_redacted": true,
+          "pdu_number": 10,
+          "message_kind": "rrc_reconfiguration_complete",
+          "embedded_direction": "uplink",
+          "sib_mask": 0,
+          "message_length": 1,
+          "rrc": {
+            "semantic_depth": "full-observed-message-tree",
+            "asn1_tree": {
+              "rrc-TransactionIdentifier": 0,
+              "criticalExtensions": [
+                "rrcReconfigurationComplete",
+                {}
+              ]
+            },
+            "asn1_root": "RRCReconfigurationComplete"
+          },
+          "rrc_raw_bytes_in_projection": false
+        },
+        "warnings": [
+          {
+            "code": "b821-v12-timing-encoding-unproven",
+            "message": "three-byte timing boundary is exact; SFN/subframe/slot packing remains opaque"
+          }
+        ]
+      }
+    },
+    {
+      "log_id": "0xB821",
+      "wrapper": "multi-radio-v1",
+      "body_hex": "0c0000000fa0000000000000000000001900000000010000",
+      "name": "nr-direct-root-25",
+      "expected": {
+        "status": "SUCCESS",
+        "fields": {
+          "source": "qualcomm-routed-diag",
+          "device_profile": "mi-11-lite-lisa-v14.0.2.0-tkomixm",
+          "mode_scope": "nsa-corpus-only",
+          "sa_compatibility_inferred": false,
+          "route_id": "mi11-nsa-b821-v12",
+          "log_id": "0xB821",
+          "record_version": 12,
+          "family": "NR5G RRC OTA/control",
+          "schema_evidence": "exact-nsg-v12-schema-plus-scat-exact-v12-plus-ts38331-plus-lisa-private-replay",
+          "decoder_scope": "exact-envelope-and-observed-direct-rrc-roots",
+          "rrc_release_major_raw": 15,
+          "rrc_release_version_raw": 160,
+          "rrc_release_number": 15,
+          "rrc_release_major": 10,
+          "rrc_release_minor": 0,
+          "rrc_release_version": "15.10.0",
+          "rrc_release_version_encoding": "u16le:number=bits[7:0],major=bits[15:12],minor=bits[11:8]",
+          "rrc_release_reserved_bit_count": 0,
+          "rrc_release_version_semantics_proven": true,
+          "radio_bearer_id": 0,
+          "physical_cell_id_present": true,
+          "physical_cell_id": 0,
+          "nr_arfcn_present": true,
+          "nr_arfcn": 0,
+          "all_ones_radio_context_form_observed": false,
+          "timing_field_octets": 3,
+          "timing_sfn_subframe_slot_semantics_proven": false,
+          "timing_field_redacted": true,
+          "pdu_number": 25,
+          "message_kind": "radio_bearer_configuration",
+          "embedded_direction": "internal_control",
+          "sib_mask": 0,
+          "message_length": 1,
+          "rrc": {
+            "semantic_depth": "full-observed-message-tree",
+            "asn1_tree": {},
+            "asn1_root": "RadioBearerConfig"
+          },
+          "rrc_raw_bytes_in_projection": false
+        },
+        "warnings": [
+          {
+            "code": "b821-v12-timing-encoding-unproven",
+            "message": "three-byte timing boundary is exact; SFN/subframe/slot packing remains opaque"
+          }
+        ]
+      }
+    }
+  ]
+}
